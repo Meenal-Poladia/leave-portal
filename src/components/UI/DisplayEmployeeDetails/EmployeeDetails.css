@@ -1,0 +1,47 @@
+.employee-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.employee-card {
+    margin-top: 50px;
+    max-width: 50%;
+    border: 2px white solid;
+    border-radius: 10px;
+    min-width: 500px;
+}
+
+.heading {
+    padding: 15px;
+    background: white;
+    margin: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.employee-info {
+    background: #dcb4f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    min-width: 500px;
+}
+
+.row {
+    padding: 20px;
+}
+
+.leave-btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.employee-info-font {
+    font-size: 20px;
+    font-weight: 500;
+}

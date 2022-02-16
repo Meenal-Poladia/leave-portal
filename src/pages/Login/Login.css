@@ -1,0 +1,50 @@
+.login-background-colour {
+    background-color: #fff8dc75;
+}
+
+.login-divider {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1px;
+    justify-items: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-container {
+    margin-bottom: 100px;
+}
+
+.on-login-options {
+    display: flex;
+    align-items: center;
+}
+
+.forgot-password-link {
+    text-align-last: end;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+}
+
+.logo-img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+
+/*// Medium devices (tablets, 768px and up)*/
+@media (max-width: 768px) {
+    .login-divider {
+        display: flex;
+        flex-direction: column;
+    }
+    .logo-img {
+        max-width: 150px;
+        max-height: 150px;
+    }
+}
+
