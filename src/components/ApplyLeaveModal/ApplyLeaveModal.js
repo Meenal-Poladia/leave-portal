@@ -9,6 +9,7 @@ import Modal from 'react-modal';
 const ApplyLeaveModal = ({showModal, id, closeModal, type, data, isNewApplication}) => {
     //UseState, dispatch and useRef
     const [startDate, setStartDate] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(false)
     const dispatch = useDispatch();
 
     //Style for Modal
@@ -53,12 +54,21 @@ const ApplyLeaveModal = ({showModal, id, closeModal, type, data, isNewApplicatio
 
     const handleLeaveApplication = (e) => {
         e.preventDefault();
-        data.applicationDate = dateToYMD(new Date());
-        data.status = "Pending";
-        data.leaveID = generateRandomNumber()
-        if(isNewApplication) dispatch(newLeaveApplication(id, data))
-        else dispatch(editLeaveApplication(id, data))
-        closeModal()
+        console.log(data.description)
+        console.log(data.startDate)
+        console.log(data.endDate)
+        if(data.description === undefined || data.startDate === undefined || data.endDate === undefined) {
+            setErrorMessage(true)
+            return
+        } else {
+            data.applicationDate = dateToYMD(new Date());
+            data.status = "Pending";
+            data.leaveID = generateRandomNumber()
+            if(isNewApplication) dispatch(newLeaveApplication(id, data))
+            dispatch(editLeaveApplication(id, data))
+            closeModal()
+        }
+
     }
 
     return ReactDOM.createPortal(
@@ -114,6 +124,8 @@ const ApplyLeaveModal = ({showModal, id, closeModal, type, data, isNewApplicatio
                     }}>
                     Submit Application
                 </Button>
+                {errorMessage &&
+                <h4>Please fill all the details to proceed</h4>}
             </form>
         </Modal>,
         document.getElementById("modal-root")
