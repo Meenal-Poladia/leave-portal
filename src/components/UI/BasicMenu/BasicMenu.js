@@ -9,7 +9,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {cancelLeaveApplication} from "../../../actions";
 
 const BasicMenu = ({data}) => {
-    console.log(data);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const authenticatedID = useSelector((state) => state.leavePortalReducer.employeeID);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -26,7 +25,6 @@ const BasicMenu = ({data}) => {
     };
 
     const handleCancel = () => {
-        console.log(`Cancelled pressed`, data);
         dispatch((cancelLeaveApplication(authenticatedID, data)))
         handleClose()
     }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from "@mui/material/Button";
-import {useRef, useState} from "react";
+import { useState} from "react";
 import {useDispatch} from "react-redux";
 import {editLeaveApplication, newLeaveApplication} from "../../actions";
 import ReactDOM from "react-dom";
@@ -9,12 +9,7 @@ import Modal from 'react-modal';
 const ApplyLeaveModal = ({showModal, id, closeModal, type, data, isNewApplication}) => {
     //UseState, dispatch and useRef
     const [startDate, setStartDate] = useState(null);
-    data.description = useRef();
-    data.endDate = useRef();
     const dispatch = useDispatch();
-    const generateRandomNumber = () => {
-       return Math.floor(Math.random() * (1000 - 1 + 1) + 1);
-    }
 
     //Style for Modal
     const customStyles = {
@@ -44,10 +39,20 @@ const ApplyLeaveModal = ({showModal, id, closeModal, type, data, isNewApplicatio
         return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d);
     }
 
+    const generateRandomNumber = () => {
+        return Math.floor(Math.random() * (1000 - 1 + 1) + 1);
+    }
+
+    const handleDescriptionChange = (e) => {
+        data.description = e.target.value;
+    }
+
+    const handleEndDateChange = (e) => {
+        data.endDate = e.target.value
+    }
+
     const handleLeaveApplication = (e) => {
         e.preventDefault();
-        data.description = data.description.current.value;
-        data.endDate = data.endDate.current.value;
         data.applicationDate = dateToYMD(new Date());
         data.status = "Pending";
         data.leaveID = generateRandomNumber()
@@ -71,28 +76,31 @@ const ApplyLeaveModal = ({showModal, id, closeModal, type, data, isNewApplicatio
                           cols="33"
                           autoCapitalize="sentences"
                           autoCorrect="on"
-                          defaultValue={data.description}
-                          ref={data.description}
+                          defaultValue={isNewApplication ? "" : data.description}
+                          onChange={(e) => handleDescriptionChange(e)}
                           maxLength="250"
                           minLength="3"
                           placeholder="Enter the reason for leave here"
                           required>
                 </textarea>
                 <div>
-                    <label htmlFor="start">Leave From:</label>
+                    <label htmlFor="leave-start">Leave From:</label>
                     <input type="date"
-                           id="start"
+                           id="leave-start"
                            name="leave-start"
                            defaultValue={data.startDate}
                            onChange={(e)=> showLeaveStartValue(e)}
                            min={currentDate}
+                           required
                     />
-                    <label htmlFor="end">Leave To:</label>
+                    <label htmlFor="leave-end">Leave To:</label>
                     <input type="date"
-                           id="end"
+                           id="leave-end"
                            name="leave-end"
-                           ref={data.endDate}
+                           defaultValue={data.endDate}
+                           onChange={(e) => handleEndDateChange(e)}
                            min={startDate}
+                           required
                     />
                 </div>
                 <Button
