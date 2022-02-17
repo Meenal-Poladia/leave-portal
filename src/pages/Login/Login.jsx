@@ -1,18 +1,22 @@
 import * as React from 'react';
-import {useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import Button from '@mui/material/Button';
 import "./Login.css"
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom"
-import {validatedEmployeeID} from "../../actions";
+import {showHeaderAndFooter, validatedEmployeeID} from "../../actions";
 
 const Login = () => {
     const loginDetails = useSelector((state) => state.leavePortalReducer.employeeData);
-
     const usernameInput = useRef();
     const passwordInput = useRef();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch((showHeaderAndFooter(false)))
+    },[])
+
 
     const validateCredentials = (username, password) => {
         const foundValue = loginDetails.find(item => {

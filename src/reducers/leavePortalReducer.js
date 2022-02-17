@@ -2,7 +2,8 @@ import {employeeData} from "../data/employeeData";
 
 const initialState = {
     employeeData: [],
-    employeeID: null
+    employeeID: null,
+    showHeaderAndFooter: false,
 }
 
 const leavePortalReducer = (state = initialState, action) => {
@@ -61,7 +62,6 @@ const leavePortalReducer = (state = initialState, action) => {
             const {empID, cancelLeave} = action.payload
 
             const newEmployeeList = employeeData.map((employee) => {
-                console.log(employee.id, empID);
                 if(employee.id === empID) {
                     employee.leaves = employee.leaves.filter((item) => {
                         return item.leaveID !== cancelLeave.leaveID
@@ -74,6 +74,14 @@ const leavePortalReducer = (state = initialState, action) => {
                 ...state,
                 employeeData: newEmployeeList
             }
+
+        case "DISPLAY_HEADER_AND_FOOTER":
+            const {value} = action.payload;
+            return {
+                ...state,
+                showHeaderAndFooter: value
+            }
+
 
         default: return state
     }

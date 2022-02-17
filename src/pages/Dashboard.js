@@ -1,15 +1,16 @@
 import '../App.css';
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import EmployeeDetails from "../components/EmployeeDetails/EmployeeDetails";
+import {showHeaderAndFooter} from "../actions";
+import {useDispatch} from "react-redux";
 
 function Dashboard() {
+    const dispatch = useDispatch();
+
+    dispatch((showHeaderAndFooter(true)))
 
     return (
-        <div className="page-layout">
-            <Header/>
+        <div>
             <EmployeeDetails/>
-            <Footer/>
         </div>
     );
 }

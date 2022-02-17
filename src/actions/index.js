@@ -45,3 +45,12 @@ export const cancelLeaveApplication = (empID, cancelLeave) => {
         }
     }
 }
+
+export const showHeaderAndFooter = (value) => {
+    return {
+        type: "DISPLAY_HEADER_AND_FOOTER",
+        payload: {
+            value
+        }
+    }
+}
