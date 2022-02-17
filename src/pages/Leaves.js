@@ -1,12 +1,12 @@
 import '../App.css';
-import LeavesDetails from "../components/LeaveDetails/LeavesDetails";
+import LeaveTable from "../components/LeaveTable/LeaveTable";
 
-function AppliedLeaveDetails() {
+function Leaves() {
     return (
         <>
-            <LeavesDetails/>
+            <LeaveTable/>
         </>
     );
 }
 
-export default AppliedLeaveDetails;
+export default Leaves;

@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import "./pages/Leaves";
+import "./pages/Dashboard";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import Routing from "./Routing";
+import {employeeCredential} from "./actions";
+import {useDispatch} from "react-redux";
+import {employeeData} from "./data/employeeData";
 
 function App() {
+    const dispatch = useDispatch()
+    dispatch(employeeCredential(employeeData))
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+          <div className="App">
+              <Routing/>
+          </div>
+      </Router>
   );
 }
 

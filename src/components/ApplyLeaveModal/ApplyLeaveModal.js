@@ -2,16 +2,19 @@ import * as React from 'react';
 import Button from "@mui/material/Button";
 import {useRef, useState} from "react";
 import {useDispatch} from "react-redux";
-import {leaveApplication} from "../../actions";
+import {editLeaveApplication, newLeaveApplication} from "../../actions";
 import ReactDOM from "react-dom";
 import Modal from 'react-modal';
 
-const ApplyLeaveModal = ({showModal, id, closeModal}) => {
+const ApplyLeaveModal = ({showModal, id, closeModal, type, data, isNewApplication}) => {
     //UseState, dispatch and useRef
     const [startDate, setStartDate] = useState(null);
-    const leaveDescriptionRef = useRef();
-    const endLeaveDateRef = useRef();
+    data.description = useRef();
+    data.endDate = useRef();
     const dispatch = useDispatch();
+    const generateRandomNumber = () => {
+       return Math.floor(Math.random() * (1000 - 1 + 1) + 1);
+    }
 
     //Style for Modal
     const customStyles = {
@@ -30,7 +33,8 @@ const ApplyLeaveModal = ({showModal, id, closeModal}) => {
 
     //Functions Declared
     const showLeaveStartValue = (e) => {
-        setStartDate(e.target.value)
+        data.startDate = e.target.value
+        setStartDate(e.target.value);
     }
 
     const dateToYMD = (date) => {
@@ -42,11 +46,13 @@ const ApplyLeaveModal = ({showModal, id, closeModal}) => {
 
     const handleLeaveApplication = (e) => {
         e.preventDefault();
-        const description = leaveDescriptionRef.current.value;
-        const endDate = endLeaveDateRef.current.value;
-        const applicationDate = dateToYMD(new Date())
-        const status = "Pending";
-        dispatch(leaveApplication(id, startDate, endDate, description, applicationDate, status))
+        data.description = data.description.current.value;
+        data.endDate = data.endDate.current.value;
+        data.applicationDate = dateToYMD(new Date());
+        data.status = "Pending";
+        data.leaveID = generateRandomNumber()
+        if(isNewApplication) dispatch(newLeaveApplication(id, data))
+        else dispatch(editLeaveApplication(id, data))
         closeModal()
     }
 
@@ -65,7 +71,8 @@ const ApplyLeaveModal = ({showModal, id, closeModal}) => {
                           cols="33"
                           autoCapitalize="sentences"
                           autoCorrect="on"
-                          ref={leaveDescriptionRef}
+                          defaultValue={data.description}
+                          ref={data.description}
                           maxLength="250"
                           minLength="3"
                           placeholder="Enter the reason for leave here"
@@ -76,6 +83,7 @@ const ApplyLeaveModal = ({showModal, id, closeModal}) => {
                     <input type="date"
                            id="start"
                            name="leave-start"
+                           defaultValue={data.startDate}
                            onChange={(e)=> showLeaveStartValue(e)}
                            min={currentDate}
                     />
@@ -83,7 +91,7 @@ const ApplyLeaveModal = ({showModal, id, closeModal}) => {
                     <input type="date"
                            id="end"
                            name="leave-end"
-                           ref={endLeaveDateRef}
+                           ref={data.endDate}
                            min={startDate}
                     />
                 </div>

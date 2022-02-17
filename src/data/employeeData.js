@@ -1,6 +1,4 @@
-
-
-export const employeeDetails = [
+export const employeeData = [
     {
         id: 1,
         username: "Mickey",
@@ -18,35 +16,45 @@ export const employeeDetails = [
                 startDate: "2020-02-23",
                 endDate: "2020-02-23",
                 description: "Feeling unwell",
-                days: 1
+                days: 1,
+                status: "Approved",
+                leaveID: 1,
             },
             {
                 applicationDate: "2020-07-18",
                 startDate: "2020-07-20",
                 endDate: "2020-07-28",
                 description: "Going on a vacation",
-                days: 9
+                days: 9,
+                status: "Approved",
+                leaveID: 2,
             },
             {
                 applicationDate: "2021-12-31",
                 startDate: "2021-01-02",
                 endDate: "2021-01-05",
                 description: "Attending friends wedding",
-                days: 4
+                days: 4,
+                status: "Approved",
+                leaveID: 3,
             },
             {
                 applicationDate: "2021-08-07",
                 startDate: "2021-08-10",
                 endDate: "2021-08-10",
                 description: "Had a visit to the hospital",
-                days: 1
+                days: 1,
+                status: "Approved",
+                leaveID: 4,
             },
             {
-                applicationDate: "2021-12-5",
+                applicationDate: "2021-12-05",
                 startDate: "2021-12-10",
                 endDate: "2021-12-17",
                 description: "Went for a vacation",
-                days: 8
+                days: 8,
+                status: "Approved",
+                leaveID: 5,
             }
         ]
     },
@@ -67,21 +75,27 @@ export const employeeDetails = [
                 startDate: "2021-01-02",
                 endDate: "2021-01-05",
                 description: "Going to the hospital",
-                days: 4
+                days: 4,
+                status: "Approved",
+                leaveID: 1,
             },
             {
                 applicationDate: "2021-08-08",
                 startDate: "2021-08-10",
                 endDate: "2021-08-10",
                 description: "Not feeling well",
-                days: 1
+                days: 1,
+                status: "Approved",
+                leaveID: 2,
             },
             {
                 applicationDate: "2021-12-04",
                 startDate: "2021-12-10",
                 endDate: "2021-12-17",
                 description: "Going on a vacation",
-                days: 8
+                days: 8,
+                status: "Approved",
+                leaveID: 3,
             }
         ]
     },
@@ -101,14 +115,18 @@ export const employeeDetails = [
                 startDate: "2021-08-10",
                 endDate: "2021-08-10",
                 description: "Not feeling well",
-                days: 1
+                days: 1,
+                status: "Approved",
+                leaveID: 1,
             },
             {
                 applicationDate: "2021-12-04",
                 startDate: "2021-12-10",
                 endDate: "2021-12-17",
                 description: "Vacation to Paris",
-                days: 8
+                days: 8,
+                status: "Approved",
+                leaveID: 2
             }
         ],
     },

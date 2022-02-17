@@ -1,50 +1,37 @@
-.login-background-colour {
-    background-color: #fff8dc75;
-}
-
-.login-divider {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 1px;
-    justify-items: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-}
-
 .login-container {
-    margin-bottom: 100px;
-}
-
-.on-login-options {
-    display: flex;
-    align-items: center;
-}
-
-.forgot-password-link {
-    text-align-last: end;
-}
-
-.login-button {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.logo-img {
-    max-width: 200px;
-    max-height: 200px;
+.login-form {
+    border: 3px #1976d2 solid;
+    border-radius: 10px;
+    padding: 35px 50px;
+    margin: 0 auto;
+    background-color: #91b87e8c;;
 }
 
-
-/*// Medium devices (tablets, 768px and up)*/
-@media (max-width: 768px) {
-    .login-divider {
-        display: flex;
-        flex-direction: column;
-    }
-    .logo-img {
-        max-width: 150px;
-        max-height: 150px;
-    }
+.login-heading {
+    margin-bottom: 50px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+.login-input {
+    margin-bottom: 30px;
+    padding: 7px;
+    width: 250px;
+    border: 3px solid #1976d2;
+    border-radius: 7px;
+}
+
+.submit-button {
+    width: fit-content;
+    align-self: center;
+    padding: 5px 20px;
+}

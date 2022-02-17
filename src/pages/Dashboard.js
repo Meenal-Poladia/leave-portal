@@ -1,11 +1,17 @@
 import '../App.css';
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import EmployeeDetails from "../components/EmployeeDetails/EmployeeDetails";
 
-function AboutUs() {
+function Dashboard() {
+
     return (
-        <div className="App">
-            <h1>About Us</h1>
+        <div className="page-layout">
+            <Header/>
+            <EmployeeDetails/>
+            <Footer/>
         </div>
     );
 }
 
-export default AboutUs;
+export default Dashboard;
